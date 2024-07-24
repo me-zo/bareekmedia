@@ -1,0 +1,23 @@
+{
+  "fixtures.languageCodes.ar": "العربية",
+  "fixtures.languageCodes.en": "English",
+  "fixtures.ThemeCodes.light": "نمط نهاري",
+  "fixtures.ThemeCodes.dark": "نمط مظلم",
+  "fixtures.unknownError": "لقد حدث خطأ ما",
+  "network.NoInternetConnection": "لا يوجد اتصال بالانترنت",
+  "actions.appLanguage": "لغة التطبيق:",
+  "actions.appTheme": "النمط:",
+  "actions.settingsHeader": "الإعدادات",
+  "actions.faqsHeader": "الأسئلة الشائعة",
+  "home.genre": "الفئة: ",
+  "home.writer": "الكاتب: ",
+  "home.actor": "الممثلين: ",
+  "home.outOf": "من",
+  "home.runtime": "وقت المشاهدة",
+  "home.rated": "التقييم",
+  "home.released": "تاريخ الاصدار",
+  "home.language": "اللغة",
+  "home.plot": "الحبكة",
+  "home.moviesHeader": "الافلام",
+  "home.moviesSearch": "ابحث عن فلم"
+}

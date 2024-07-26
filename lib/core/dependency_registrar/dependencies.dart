@@ -21,7 +21,7 @@ Future<void> initDependencies(Build build) async {
     case Build.DEVELOP:
       sl.registerSingleton<Configuration>(
         Configuration(
-          domain: "/////////////////",
+          baseUrl: "/////////////////",
           variant: build,
           defaultErrorMessage: "core.fixtures.unknownError",
         ),
@@ -30,7 +30,7 @@ Future<void> initDependencies(Build build) async {
     case Build.RELEASE:
       sl.registerSingleton<Configuration>(
         Configuration(
-          domain: "/////////////////",
+          baseUrl: "/////////////////",
           variant: build,
           defaultErrorMessage: "core.fixtures.unknownError",
         ),

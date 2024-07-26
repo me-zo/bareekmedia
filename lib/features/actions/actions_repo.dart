@@ -1,11 +1,11 @@
-import 'package:bareekmedia/core/errors/failure_model.dart';
+import 'package:bareekmedia/features/base_repo.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../core/dependency_registrar/dependencies.dart';
 import '../../app/settings_notifier.dart';
 import '../../models/settings_model.dart';
 
-class ActionsRepo {
+class ActionsRepo extends BaseRepo {
   final SettingsNotifier _settingsNotifier = sl();
 
   Either<FailureModel, SettingsModel> loadSettings() => Right(

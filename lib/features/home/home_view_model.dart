@@ -14,7 +14,7 @@ class HomeViewModel extends BaseViewModel {
 
   bool didClickBackOnce = false;
 
-  Future<void> preloadWebView() async {
+  Future<void> loadWebView() async {
     setBusy();
     await Future.forEach([
       await homeWebViewController

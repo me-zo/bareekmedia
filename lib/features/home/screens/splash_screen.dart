@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        Provider.of<HomeViewModel>(context, listen: false).preloadWebView();
+        Provider.of<HomeViewModel>(context, listen: false).loadWebView();
         return Navigator.pushReplacementNamed(
           context,
           HomeScreen.name,

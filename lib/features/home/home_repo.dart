@@ -2,17 +2,11 @@ import 'dart:io';
 
 import 'package:bareekmedia/core/cache/session_cache_manager.dart';
 import 'package:bareekmedia/core/dependency_registrar/dependencies.dart';
-import 'package:bareekmedia/core/errors/failure_model.dart';
-import 'package:bareekmedia/core/network/network_client.dart';
-import 'package:bareekmedia/core/network/network_config.dart';
+import 'package:bareekmedia/features/base_repo.dart';
+import 'package:bareekmedia/models/movie_model.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../core/errors/error_handler.dart';
-import '../../../core/errors/errors.dart';
-import '../../models/movie_model.dart';
-
-class HomeRepo {
-  final NetworkClient _client = NetworkClient(config: NetworkConfig());
+class HomeRepo extends BaseRepo {
   final SessionCacheManager<MovieListModel> _movieListCache = sl();
 
   /// sample on how a BE request can be made, and handled.
@@ -23,7 +17,7 @@ class HomeRepo {
       ErrorHandler.handleFuture<List<MovieModel>>(
         () async {
           if (!_movieListCache.contains(keyword)) {
-            var result = await _client.get(query: {
+            var result = await client.get(query: {
               "s": keyword.replaceAll(" ", "+"),
               "page": searchPage.toString(),
             });

@@ -24,11 +24,7 @@ class FadePageRoute<T> extends PageRoute<T> {
   final Object? arguments;
 
   FadePageRoute(
-      {required this.builder,
-      this.name,
-      this.arguments,
-      RouteSettings? settings})
-      : super(settings: settings);
+      {required this.builder, this.name, this.arguments, super.settings});
 
   @override
   Color? get barrierColor => null;

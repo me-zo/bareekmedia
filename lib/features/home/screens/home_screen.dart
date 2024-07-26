@@ -24,18 +24,13 @@ class HomeScreen extends StatelessWidget {
             mini: true,
             child: const Icon(Icons.settings),
           ),
-          body: Consumer<HomeViewModel>(
-            builder: (context, model, _) {
-              if (model.isBusy) {
-                return Center(
+          body: (viewModel.isBusy)
+              ? Center(
                   child: CircularProgressIndicator(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
-                );
-              }
-              return const _WebViewComponent();
-            },
-          ),
+                )
+              : _WebViewComponent(controller: viewModel.homeWebViewController),
         ),
       ),
     );
@@ -43,15 +38,15 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _WebViewComponent extends StatelessWidget {
-  const _WebViewComponent();
+  final WebViewController controller;
+
+  const _WebViewComponent({required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
-      builder: (cxt, viewModel, widget) => SafeArea(
-        child: WebViewWidget(
-          controller: viewModel.homeWebViewController,
-        ),
+    return SafeArea(
+      child: WebViewWidget(
+        controller: controller,
       ),
     );
   }

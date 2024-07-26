@@ -15,6 +15,7 @@ class HomeRepo {
   final NetworkClient _client = NetworkClient(config: NetworkConfig());
   final SessionCacheManager<MovieListModel> _movieListCache = sl();
 
+  /// sample on how a BE request can be made, and handled.
   Future<Either<FailureModel, List<MovieModel>>> searchMovies(
     String keyword, {
     int? searchPage,

@@ -17,16 +17,19 @@ class HomeViewModel extends BaseViewModel {
   Future<void> preloadWebView() async {
     setBusy();
     await Future.forEach([
-      homeWebViewController.setJavaScriptMode(JavaScriptMode.unrestricted),
-      homeWebViewController.setNavigationDelegate(
+      await homeWebViewController
+          .setJavaScriptMode(JavaScriptMode.unrestricted),
+      await homeWebViewController.setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
             // Update loading bar.
           },
         ),
       ),
-      homeWebViewController
-          .loadRequest(Uri.parse('http://demo.bareekmedia.com/en/hp')),
+      await homeWebViewController.loadRequest(
+        Uri.parse('http://demo.bareekmedia.com/en/hp'),
+        headers: {"source": "mobile"},
+      ),
     ], (element) => null);
     setIdle();
   }

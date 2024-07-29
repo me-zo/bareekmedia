@@ -11,6 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDependencies(_extractBuildFromDartDefinedVariable());
 
+
+  Log.initLogger(types: [LogType.all]);
+
   Animate.restartOnHotReload = true;
   //TODO: REMOVE IN PRODUCTION (for overriding http certificates)
   HttpOverrides.global = MyHttpOverrides();

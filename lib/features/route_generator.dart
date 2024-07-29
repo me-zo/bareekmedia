@@ -1,3 +1,4 @@
+import 'package:bareekmedia/core/logger.dart';
 import 'package:bareekmedia/features/actions/screens/settings_screen.dart';
 import 'package:bareekmedia/features/home/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -5,17 +6,16 @@ import 'package:flutter/material.dart';
 import 'home/screens/home_screen.dart';
 
 class RouteGenerator {
-  Route? call(RouteSettings routeSettings) {
-    return FadePageRoute<void>(
-      settings: routeSettings,
-      builder: (BuildContext context) => switch (routeSettings.name) {
-        (SettingsScreen.name) => const SettingsScreen(),
-        (HomeScreen.name) => const HomeScreen(),
-        (SplashScreen.name) => const SplashScreen(),
-        (_) => const HomeScreen(),
-      },
-    );
-  }
+  Route? call(RouteSettings routeSettings) => FadePageRoute<void>(
+        settings: routeSettings,
+        arguments: routeSettings.arguments,
+        builder: (BuildContext context) => switch (routeSettings.name) {
+          (SettingsScreen.name) => const SettingsScreen(),
+          (HomeScreen.name) => const HomeScreen(),
+          (SplashScreen.name) => const SplashScreen(),
+          (_) => const HomeScreen(),
+        },
+      );
 }
 
 class FadePageRoute<T> extends PageRoute<T> {
@@ -35,6 +35,10 @@ class FadePageRoute<T> extends PageRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
+    Log.d(
+      "Building screen \b$name through a Named Route with arguments: $arguments",
+      type: LogType.analytics,
+    );
     return builder(context);
   }
 

@@ -28,8 +28,11 @@ class NetworkClient {
           var finalUrl = Uri.parse("${config.baseUrl}/$url")
               .replace(queryParameters: allQueryParams);
 
-          Log.d("Posting To: $finalUrl"
-              "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}");
+          Log.d(
+            "Posting To: $finalUrl"
+            "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}",
+            type: LogType.networkCalls,
+          );
 
           http.Response result = await http.post(
             finalUrl,
@@ -37,9 +40,12 @@ class NetworkClient {
             body: body,
           );
 
-          Log.d("Response code: ${result.statusCode}"
-              "\nResponse headers: ${result.headers}"
-              "\nResponse body: ${result.body}");
+          Log.d(
+            "Response code: ${result.statusCode}"
+            "\nResponse headers: ${result.headers}"
+            "\nResponse body: ${result.body}",
+            type: LogType.networkCalls,
+          );
           return result;
         },
       );
@@ -56,16 +62,22 @@ class NetworkClient {
           var finalUrl = Uri.parse("${config.baseUrl}/$url")
               .replace(queryParameters: allQueryParams);
 
-          Log.d("Getting From: $finalUrl"
-              "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}");
+          Log.d(
+            "Getting From: $finalUrl"
+            "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}",
+            type: LogType.networkCalls,
+          );
 
           var result = await http.get(
             finalUrl,
             headers: generalHeaders,
           );
 
-          Log.d("Response code: ${result.statusCode}"
-              "\nResponse body: ${result.body}");
+          Log.d(
+            "Response code: ${result.statusCode}"
+            "\nResponse body: ${result.body}",
+            type: LogType.networkCalls,
+          );
           return result;
         },
       );
@@ -78,9 +90,12 @@ class NetworkClient {
         () async {
           var finalUrl = Uri.parse(config.baseUrl);
 
-          Log.d("Putting To: $finalUrl"
-              "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}"
-              "\nRequest body: $body");
+          Log.d(
+            "Putting To: $finalUrl"
+            "\nRequest headers: ${const JsonEncoder.withIndent("    ").convert(generalHeaders)}"
+            "\nRequest body: $body",
+            type: LogType.networkCalls,
+          );
 
           var result = await http.put(
             finalUrl,
@@ -88,9 +103,12 @@ class NetworkClient {
             body: body,
           );
 
-          Log.d("Response code: ${result.statusCode}"
-              "\nResponse headers: ${result.headers}"
-              "\nResponse body: ${result.body}");
+          Log.d(
+            "Response code: ${result.statusCode}"
+            "\nResponse headers: ${result.headers}"
+            "\nResponse body: ${result.body}",
+            type: LogType.networkCalls,
+          );
 
           return result;
         },
